@@ -1,0 +1,205 @@
+                                 CS106 Fall 2014
+                                      Lab 03
+                                September 22, 2014
+**********************************************************************************
+
+Purpose: Practice working with the following Java topics 
+         for-loop construct,
+         variable scopes,
+         logical operators &&, ||, and !.
+         use Random objects to produce random numbers.
+         
+Instructions:
+
+Save this file to disk. Enter answers for problems 3, and 4 directly in it.
+Submit what is requested at the end of this file via email to me at 
+maghilin@skidmore.edu
+***********************************************************************************
+Problem 1:
+----------
+   
+Complete the following program to play guess a number game. The input to the program is a number between 1 - 10.
+You should fill in the code in the parts shown by ... to give the player, 5 chances to win. If the player wins 
+the game should be stopped to print out the results. 
+
+
+
+import java.util.Random;
+import java.util.Scanner;
+
+/* This is a program to play the game of Guess a Number.
+ * The player gets 5 chances to guess a number between 1 - 10
+ */
+
+
+public class GuessNumber {
+
+public static void main(String[] args) {
+    System.out.println(" Welcome ");
+
+    Random rand = new Random();
+    Scanner input = new Scanner(System.in);
+    
+    int number_guess = rand.nextInt(10)+1;
+    int guess;
+   
+    int i;
+	    for(i=1; i<=5; i++){
+
+       System.out.println(" Try too guess a number between 1 and 10 ");
+       guess = input.nextInt();
+       if (guess == number_guess)
+        {
+    	   System.out.println(" Congratulations! You Win!!!");
+             break;
+
+        }
+        else if (guess < number_guess)
+        {
+            System.out.println(" Guess is too low " + "\n Guess another number to continue");
+            
+        }
+        else if (guess > number_guess)
+        {
+            System.out.println(" Guess is too high " + "\n Guess another number to continue");
+           
+        }
+ 
+    }
+
+    System.out.println(" The number was " + number_guess);
+    System.out.println(" You were a sport player!");
+
+
+    }
+}
+
+----------
+Problem 2:
+----------
+
+Try to guess the output of the following Java program first, then run it and compare the results.
+
+
+public class Mystery{
+     public static void main(String[] args) {
+         for (int i = 1; i <= 10; i++) {
+            for (int j = 1; j <= 10; j++) {
+                 System.out.print(i * j + "\t");
+            }
+         System.out.println();
+         }
+     }
+}
+
+a)
+My guess is that the code will output a block of numbers that is essentially a times table of (i*j). There will be ten rows and ten columns, each consting of multiples of i and j. 
+
+b)The output was similar to my guess, but there were only nine rows. The code produced a table fo multiplication values that showed the result of (i*j) as i and j were incrementally increased by one each time. 
+
+
+    
+----------
+Problem 3:
+----------
+
+A variable's scope is the part of a program in which it exists. In Java, the scope of a variable starts when it is declared and ends when the closing curly brace for the block that contains it is reached. 
+A variable is said to be in scope where it is accessible.
+
+In which of the two blocks the variable count is accessible? How about variable i?
+
+public class Example {
+    public static void main(String[] args) {
+        int count = 12;
+        for (int i = 1; i <= 12; i++) {          
+            runSample();
+            System.out.print(count);   
+        }
+    }
+
+    public static void runSample() {
+	    System.out.print("sample");
+    }
+}
+
+
+ANSWER:
+The integer i is declared inside the for loop, and therefor can only be used inside the for loop. After the closed curley braces after the System.out.print(count); the integer i does not exist.
+
+The integer count is accessible in both of the blocks of code; it is declared as a varriable before the for loop, and it exists up until the closed curley braces at the end of the code. 
+
+
+
+
+
+
+ 
+----------
+Problem 4:
+----------
+
+ Suppose you work as an activity director at Lake Placid Resort, it is your job to
+ suggest appropriate activities to guests based on the weather:
+
+  temp >= 80:       swimming
+  60 <= temp < 80:  tennis
+  40 <= temp < 60:  golf
+  temp < 40:        skiing
+
+ a. For this problem,
+    *******************************************
+    NOTE WELL: Use elses between each if, and be sure that your 
+    conditions are no more complex than necessary.
+    *******************************************
+
+    Write a program (with class name SuggestActivity) that prompts the
+  user for a temperature, then prints out the activity appropriate for
+  that temperature.   Note that for this part (part a), your conditions
+  will NOT need to contain any logical operators.  If you decide which
+  values to compare in the right order all the conditions of the ifs can
+  be of the form (temp >= ___), assuming temp is the variable holding
+  the value that the user inputted.
+
+ b. Modify your program so that if the temperature is greater than 95
+ or less than 20, it prints "Visit our shops!". (Hint: Use a boolean/logical
+ operator in this new condition.) For other temperatures print the
+ activity as before.
+
+ you only need to submit the revised (b) version.
+
+
+----------
+Problem 5:
+----------
+
+Write a Java program that produces the following output:
+
+5
+8
+11
+14
+17
+
+Then modify your code to produce the following output: (Note now you will need 
+a nested loop.) 
+
+*****
+********
+***********
+**************
+***************** 
+ 
+
+Submit to me maghilin@skidmore.edu via email the following:
+the .java file for problems 4 and 5.
+and this file with your answer to the rest.
+
+
+
+
+
+
+
+
+
+

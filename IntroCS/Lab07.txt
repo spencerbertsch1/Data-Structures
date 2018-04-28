@@ -1,0 +1,174 @@
+                                 CS106 Fall 2014
+                                      Lab 07
+                                October 20, 2014
+**********************************************************************************
+
+Purpose: Exam1 - overview
+         write our own new classes of objects; 
+             - declare fields, methods,
+         understand the difference between class code and client code
+         
+Instructions:
+
+Save this file to disk. Enter answers for problems 2, 3 directly in it.
+Submit what is requested at the end of this file via email to me at 
+maghilin@skidmore.edu
+***********************************************************************************
+----------
+Problem 1:
+----------
+   
+Recall that a client program is a program that uses objects. Create a Java class called Dog, as following:
+
+// A Dog object represents a dog.
+// Second version: states and behavior .
+
+public class Dog {
+        // fields
+	double weight;
+	String name;
+
+        // methods	
+	public void barking (){
+		System.out.println("Woof Woof");
+	}
+	
+	public double fetching(double speed, double time){
+		return (speed * time);
+	}
+
+}
+
+Notice that there are a couple things different than previous classes that you practiced:
+  First, there is no main method, it won't be run like a client program. 
+  Second, methods don't have static keyword in the header. 
+  finally, variables declared outside of any method (fields) are visible in every method.
+
+Save this class. Next, create a client program as given below and save it as a class called
+DogCompare. Run this program. 
+
+// A program to compare two dogs grooming cost and fetching distance.
+// Second version: object states and behavior 
+
+public class DogCompare {
+
+	public static void main(String[] args) {
+		// Create two Dog objects.
+		Dog d1 = new Dog();
+		d1.weight = 50.0;
+		d1.name = "Lucky";
+		
+		Dog d2 = new Dog();
+		d2.weight = 60.0;
+		d2.name = "Buddy";
+		
+		// Compute grooming cost for each dog
+		double g1, g2;
+		g1 = 2.0 * d1.weight - 40.0;
+		g2 = 2.0 * d2.weight - 40.0;
+		System.out.println("Grooming cost for " + d1.name + " is: $" + g1);
+		System.out.println("Grooming cost for " + d2.name + " is: $" + g2);
+		System.out.println();
+		
+		// Compare the running speed of the dogs.
+		System.out.println(d1.name + " runs " + d1.fetching(30.0,  0.64) + " feet while " +
+		                    d2.name + " runs " + d2.fetching(25.0,  0.64) + " feet at the       
+                             same time");
+
+	}
+
+}
+
+
+
+----------
+Problem 2:
+----------
+
+Given class Dog from problem 1, what are the name and weights of the Dog referred to as 
+d1, d2, and d3 after the following code executes? Recall that Dog and other objects use 
+reference semantics.
+
+Dog d1 = new Dog();
+d1.name "Spot";
+d1.weight = 30;
+Dog d2 = new Dog();
+d2.name = "Totto";
+d2.weight = 40;
+Dog d3 = d2;
+
+d2.name = "Lucky";
+
+d1: 
+NAME= Spot
+WEIGHT= 30
+
+d2:
+NAME= Lucky
+WEIGHT= 40
+
+d3:
+NAME= Lucky
+WEIGHT= 40
+
+
+    
+----------
+Problem 3:
+----------
+Given the following Dog class has 5 errors. Can you find them all?
+// A Dog object represents a dog.
+// Second version: states and behavior .
+
+public class Dog {
+        // fields
+	double weight;
+	String name;
+
+        // methods	
+	public void barking (){
+		System.out.println(d.name + " says: Woof Woof");
+	}
+	
+	public void fetching(double speed, double time){
+		return (speed * time);
+	}
+
+	public double groomingCost(){
+                double weight;
+                String name;
+		return (2.0 * d.weight - 40.0);
+	}
+
+
+}
+
+PROBLEMS:
+1. The "d.name" in the first method is undefined.
+2. Similarly, the "d.weight" in the last method is undefined. 
+3. The void method in the program cannot return a value. 
+4. Weight is defined twice. 
+5. Name is defined twice
+
+
+----------
+Problem 4:
+----------
+Write a Java class called Library with fields and methods that you define.
+You can declare an array of books as one of the field variables and use the
+concept of the method find that you wrote in exam to see whether a book is 
+found in the library.  
+
+
+Submit to me maghilin@skidmore.edu via email the following:
+the .java file for problem 4, and this file with your answer to the rest.
+
+
+
+
+
+
+
+
+
+

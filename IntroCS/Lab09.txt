@@ -1,0 +1,311 @@
+                                 CS106 Fall 2014
+                                      Lab 09
+                                November 3, 2014
+**********************************************************************************
+
+Purpose: Get more practice with classes and object-oriented programming; 
+         use inheritance to implement class hierarchies,
+         extend behavior and override existing behavior.
+         
+Instructions:
+
+Save this file to disk. Submit what is requested at the end of this file via email 
+to me at maghilin@skidmore.edu
+***********************************************************************************
+----------
+Problem 1:
+----------
+   
+Create the following two classes in files called Animal.java and Dog.java respectively: 
+  
+//**********************************************************************************************
+//*
+//*  An Animal class    
+//*
+//**********************************************************************************************
+
+public class Animal {
+    private String name;
+
+    public Animal() {
+        System.out.println(”A new animal");
+    }
+     
+    public String getName() {
+        return name;
+    }
+    public void setName(String n) {
+        name = n;
+    }
+
+    public void move() {
+        System.out.println("An animal moves");
+    }
+     
+    public void eat() {
+        System.out.println("An animal eats food");
+    }
+}
+
+
+//**********************************************************************************************
+//*
+//*  A Dog class    
+//*
+//**********************************************************************************************
+
+public class Dog extends Animal {
+    private double weight;
+
+    public Dog() {
+        System.out.println(”A new dog");
+    }
+    public void move() {
+        System.out.println("A dog moves");
+    }
+
+}
+
+
+What is the outcome of the following code in a program:
+
+       Dog lucky = new Dog();
+
+       lucky.move();
+       lucky.eat();
+
+
+PROBLEM 1
+		//Outcome is:
+		//A dog moves
+		//An animal eats food
+		
+
+----------
+Problem 2:
+----------
+
+Suppose the Dog class changes as following:
+
+public class Dog extends Animal {
+    private double weight;
+
+    public Dog() {
+        System.out.println(”A new dog");
+    }
+    public void move() {
+        super.move();
+    }
+    public void eat() {
+        System.out.println("A dog eats meat");
+    }
+
+}
+
+
+What is the outcome of the following code now:
+
+       Dog lucky = new Dog();
+
+       lucky.move();
+       lucky.eat();
+
+	PROBLEM 2:
+		An animal moves
+		A dog eats meat
+
+
+
+----------
+Problem 3:
+---------- 
+Create a class Cat as following:
+
+//**********************************************************************************************
+//*
+//*  A Cat class    
+//*
+//**********************************************************************************************
+
+public class Cat extends Animal {
+    
+    public Cat() {
+        super();
+        System.out.println("A new cat");
+    }
+    public void move() {
+        System.out.println("A cat moves");
+    }
+    public double eat() {
+        System.out.println("A cat eats meat");
+        return 1.50;
+    }
+	public void talk (){
+		System.out.println(”Meow...");
+	}	
+	public void fetch(){
+		System.out.println(“It’s not going to happen”);
+	}
+}
+
+What is the outcome of the following code:
+
+       Cat tiger = new Cat();
+
+       tiger.move();
+       tiger.eat();
+
+PROBLEM 3:
+
+Output-
+A new animal
+A new cat
+A cat moves
+A cat eats meat
+
+
+   
+----------
+Problem 4:
+----------
+Add the following two methods to each of the Cat and Dog classes: 
+
+1. costPerYear: 
+   For the Dog class, this method should accept a dog weight as a double and return the cost again as a double 
+   value. You should implement the following logic in computing the cost:
+
+     if a small dog (9 - 22lb) typical cost: $670
+        a medium-sized dog (23 - 55lb)  typical cost: $695
+        a large dog (56 - 100lb) typical cost: $875 
+
+   For the Cat class, the method should not accept any parameters and should just return a double value of $670.
+
+2. realAge:
+   This method provides accepts the age of the dog/cat as an integer and returns the age in human years as an integer 
+   value using the following formula:
+
+                      assuming x represents cat/dog years
+                      if x is 1   --->  human year = 15
+                      if x is 2   --->  human year = 24
+                      if x > 2    --->  human year = 24 + 4(x - 2)= 4x + 16
+            
+Test each of these methods by creating a cat and a dog object of 20lb weight and 4 years old in a short program and 
+compute the age in human years and cost of keeping each of them per year.
+ 
+----------
+Problem 5:
+----------
+Create another class Bird in a file Bird.java to accompany Dog and Cat classes. This class should store attributes 
+common to all birds -- color, food, and movement -- (as Strings) with methods to access these attributes and to 
+convert them to a string for output purposes. Also, a Bird constructor should receive Strings color, food, and 
+movement. Here are the high lights of such class (you should fill in the dots): 
+
+
+
+public class Bird extends Animal
+{
+  //--- Attribute variables ---
+  private String myColor, myFood, myMovement;
+  
+ /** Bird constructor
+  *  Receive:       Strings color, food, and movement
+  *  Postcondition: A Bird object is constructed with myColor == color
+  *                  && myFood == food && myMovement == movement.
+  */
+
+ //       ...
+
+    
+ /** color accessor
+  *  Return: myColor */
+  public String getColor(){
+    ...
+  }
+
+ /** food accessor
+  *  Return: myFood */
+  public String getFood(){
+    ...
+  }
+
+ /** movement accessor
+  *  Return: myMovement */
+  public String getMovement() { 
+   ...
+  }
+
+/** name accessor
+ * Return: name */
+  public String getName() {
+  ...
+  }
+
+/** set name
+ * sets the name variable */
+  public void setName(String n) {
+  ...
+  }
+
+
+
+ /** toString method
+  *  Return: a String representation of a Bird's attributes
+  */
+  public String toString()                 // output my
+  {                                        // attributes:
+                   ...                     //  color
+                                           //  name
+                                           //  movement
+                                           //  food            
+  }
+
+
+}
+
+Create a bird object and set its name to BigBird. Print out the object using the super keyword to interact with the 
+Animal superclass to get the name of the bird.
+
+
+----------
+Problem 6:
+----------
+Create a class called Chihuahua as subclass to class Dog with the following additions. This class should have an attribute 
+name of type String besides to the following two methods: 
+
+  1. The method drive to reflect the temperament of Chihuahuas: "Lively, Devoted, Alert, Quick, Courageous" dogs:
+
+   
+      public void drive() {
+
+         ...
+
+      }
+
+  2. The method toString to print out an object of type Chihuahua in the following manner:
+
+ /** toString method
+  *  Return: a String representation of a Chihuahua's attributes
+  */
+  public String toString()                 // output my
+  {                                        // attributes:
+                   ...                     // type
+                                           // name
+                                           // age in human years           
+  }
+
+
+Use the parent class to get a 3 year old Chihuahua called Champ its age in human years, and print out its 
+characteristics in your client program.
+
+Submit to me maghilin@skidmore.edu via email the following:
+the .java file for problem 1-6.
+
+
+
+
+
+
+
+
+
+

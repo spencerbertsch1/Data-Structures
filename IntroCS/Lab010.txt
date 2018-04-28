@@ -1,0 +1,249 @@
+                                 CS106 Fall 2014
+                                      Lab 10
+                                November 17, 2014
+**********************************************************************************
+
+Purpose: Practice in the following Java topics:
+           - defining an interface and classes to implement it. 
+           - use interface to implement polymorphism.
+           - ArrayList.
+           - compareTo method
+           - recursion
+         
+         
+Instructions:
+
+Save this file to disk. Submit what is requested at the end of this file via email 
+to me at maghilin@skidmore.edu
+***********************************************************************************
+----------
+Problem 1:
+----------
+
+Recall that an interface is a collection of abstract methods which describes the common features to all
+classes which implement the interface.
+ 
+a.   
+Define an interface Shape with abstract methods getArea() and getPerimeter(). Both of these methods should return a value of type double and should not accept any values. Define two additional classes for a triangle and a rectangle, which implement getArea() and getPerimeter(). The first method has to return the areas of the rectangle (height * width) and the triangle (square root of( s * (s - a) * (s - b) * (s - c)) with s = (a + b + c)/2 ). The second method has to return the perimeter of each shape respectively. 
+
+Triangle class should have a constructor which initializes the fields side1, side2, and side3. The rectangle class should have a constructor to initialize the fields height and width.
+
+b.
+Define a class for a circle with an appropriate constructor, which initializes the field radius, 
+and implement the abstract methods for calculating the area and perimeter. 
+
+c.
+Write a client program and create an array of different shapes as following:
+
+ - A circle with center at point (2, 3) and radius 4. (you can either use your own Point class or use Java's 
+   built-in Point class - if so you need to add import java.awt.Point; at the beginning of your program.
+ - A triangle with sides of 4, 3, and 5.
+ - A rectangle with height and width of 3 and 4.
+
+Calculate the area of each shape in another array, and print out those values.
+
+
+
+ ----------
+Problem 2:
+----------
+Given the following Animal class: 
+//**********************************************************************************************
+//*
+//*  An Animal class    
+//*
+//**********************************************************************************************
+
+public class Animal {
+    private String name;
+
+    public Animal() {
+        System.out.println(”A new animal");
+    }
+     
+    public String getName() {
+        return name;
+    }
+    public void setName(String n) {
+        name = n;
+    }
+
+    public void move() {
+        System.out.println("An animal moves");
+    }
+     
+    public void eat() {
+        System.out.println("An animal eats food");
+    }
+}
+
+
+Write three more classes as following:
+
+
+ 1. A dog is an animal. Create a Dog class which has only a field variable weight, and a constructer which initializes 
+    the field weight and the field name in its parent class, Animal. This Dog class should also have methods 
+    move() and eat() to override its parent's.
+
+ 2. A German Shepard is a dog. Create a GermanShepard class with no field variables and a constructor which 
+    initializes the dog name and weight.
+
+ 3. A Chihuahua is also a dog. Create a Chihuahua class with no field variables and a constructor which 
+    initializes the dog name and weight.
+
+  Write a client program to use these classes by creating a static array called d of Dog objects. This array should 
+  have length of 3 and hold three objects of types: Dog, Chihuahua, and GermanShepard respectively. 
+
+     - Add one more dog of any type of your choice to the array as the second element. What happens to the array of dogs?
+     - What happens if you have an array of larger size for example 100 or 1000 elements and you want to add/remove an
+       arbitrary element?    
+
+----------
+Problem 3:
+----------
+
+Use the Arrays.toString() method to print out the elements of array d in problem 2 such that for each dog you 
+should print its name and weight. A sample output:
+
+[Buddy 50.0, Max 70.0, Champ 10.0, Alex 60.0]
+
+Now use Arrays.sort(d) method to sort array d based on the dogs' weights. Notice that you need to implement the 
+system built-in Comparable interface by writing the proper compareTo() method in the Dog class.The overall lines 
+of the class are given below and you should fill out the details.
+
+ public class Dog extends Animal implements Comparable<Dog>{
+    private double weight;
+
+   ...
+    
+    public int compareTo(Dog other){
+       ...
+    }
+ }
+
+
+----------
+Problem 4:
+---------- 
+
+Create an ArrayList called a, of Dog objects and add the three dogs from problem 3 to this array. Add 2 more dogs 
+of any breed you like to the array. 
+
+  1. Add another dog as the second element of the new array. 
+
+  2. Print out the elements of the unsorted array. 
+
+  2. Use the command:
+
+         Collections.sort(a);
+
+     to sort the ArrayList based on their weight as before. Print out the sorted array.
+
+  3. Remove the second element from the array. Print the array again.
+
+------------
+Problem 5
+------------
+
+Recall that a recursive function has the following general form:
+
+returnType functionName( parameters ) {
+
+  if a simple case, return the simple value   // base case / stopping condition
+
+  else call function with simpler version of problem 
+}
+
+For a recursive function to stop calling itself we require some type of stopping condition. An example of a recursive 
+function is Fibonacci function which has the following general definition (given n is an integer >= 0):
+
+
+   Fibonacci(n) = Fibonacci(n - 1) + Fibonacci(n - 2)
+
+   Stopping conditions:
+
+                  Fibonacci(0) = 0 
+                  Fibonacci(1) = 1 
+ 
+
+Consider the following program which contains a recursive function to generate Fibonacci Sequence:  
+
+
+import java.util.Scanner;
+
+public class FibonacciDemo {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter an integer number:");
+		int number = input.nextInt();
+		int f = fibonacci(number);
+		System.out.println("Fibonacci of " + number + " is " + f);
+        input.close();
+	}
+
+
+	public static int fibonacci(int n){
+		int answer;
+		if (n == 0) 
+			  answer = 0;
+		else if (n == 1) 
+			     answer = 1;
+		     else 
+			     answer = fibonacci(n - 1) + fibonacci(n - 2);
+		return answer;
+	}
+}
+
+Let's input the value 5 for this program.
+
+The following recursive calls are made.  Notice the (upside-down) tree structure created by the recursive calls.
+
+                              Fibonacci(5) 
+                              /         \ 
+                             /           \ 
+                            /             \ 
+                           /               \ 
+                          /                 \ 
+                       F(4)        +        F(3) 
+                       /  \                 /  \ 
+                      /    \               /    \ 
+                     /      \             /      \ 
+                    /        \           /        \ 
+                   /          \         /          \ 
+                 F(3)   +    F(2)    F(2)   +     F(1) 
+                 /\           /\       |  \         \ 
+                /  \         /  \      |   \         \ 
+               /    \       /    \     |    \         \ 
+              /      \     /      \    |     \         \ 
+             F(2) + F(1)  F(1) + F(0) F(1) + F(0)       1 
+              /\      |    |      |    |      | 
+             /  \     |    |      |    |      | 
+            /    \    |    |      |    |      | 
+           /      \   |    |      |    |      | 
+          F(1) + F(0) 1    1      0    1      0 
+          |       | 
+          |       | 
+          |       | 
+          |       | 
+          1       0
+
+
+What is fibonacci(5)? How about fibonacci(10)? What happens if in the fibonacci method, you remove the first else keyword? Can you explain why? 
+
+ANSWER
+The fibonacci sequance of 5 is 5. This is because the addition of two and three is five. 
+The fibonacci sequence of 10 is 55. 
+If you remove the first else keyword, the program will no longer work because the n value is calculated using a sequance that uses the values 0 and 1. If you say "n == 0 and n == 1" the computer will get confsed. 
+
+Submit to me maghilin@skidmore.edu via email the following:
+the .java file for problem 1-5.
+
+
+
+
+
+
+
+
+
+

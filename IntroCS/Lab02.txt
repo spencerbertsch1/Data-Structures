@@ -1,0 +1,217 @@
+                                 CS106 Fall 2014
+                                      Lab 02
+                                September 15, 2014
+**********************************************************************************
+
+Purpose: Practice interactive programming using the Scanner and JOptionPane classes,
+         get familiar with if/else constructs, variables, etc.
+         assignment conversion and casting.
+         
+Instructions:
+
+Save this file to disk. Enter answers for problems 3, and 4 directly in it.
+Submit what is requested at the end of this file via email to me at 
+maghilin@skidmore.edu
+***********************************************************************************
+Problem 1:
+----------
+   
+Complete the following program to determine the age of a user by using just the year
+part of the input. The input to the program includes a month, day, and year of birth.
+The program then prints the birthdate in a suitable format and computes the age.
+
+You can create a class called Age in Eclipse and then copy/paste the code below into
+it. 
+
+// ********************************************************************************
+// 
+//   Age.java
+// 
+//   Computes the age of the user given the birthday
+// 
+// *********************************************************************************
+ 
+import javax.swing.JOptionPane;
+
+public class Age
+{
+   public static void main (String[] args)
+   {
+      int    year, age;
+      String day_string, month_string, yr_string; // input Strings 
+
+      // Start conversation
+      JOptionPane.showMessageDialog(null, "Hello there!");          
+      day_string = JOptionPane.showInputDialog("On what day of the month you were born? ");
+      month_string = JOptionPane.showInputDialog("What is the name of the month in which you were born? ");
+      yr_string = JOptionPane.showInputDialog("During what year you were born? ");      
+      
+      // Compute the age using the year, and the age variables.
+      
+
+      
+      // Prints the answer
+      System.out.println("You were born on " + month_string + " " + 
+                                   day_string + ", " + yr_string); 
+      System.out.println("You are " + age + " years young!");
+   }
+}
+
+
+----------
+Problem 2:
+----------
+Complete the following Java program that uses the Scanner first to read a part-time employee's name and 
+then a real number for the employee's pay/hour and an integer for the number of hours the employee worked 
+this week. You should compute the amount of employee's paycheck using an if...else statement. 
+The employee should receive 'overtime" pay of 1 1/2 normal hourly pay for any hours above 8. 
+An example output of this program for $4.00 pay/hour and 11 hours of work will be:
+
+What is your name? George
+Hi George, you have earned $50.0.
+
+// This program prompts for information about an employee's work
+//  and computes the employee's paycheck
+
+import java.util.*;  // for Scanner
+
+public class PayCheck {
+	public static void main(String[] args) {
+		double pay;
+		Scanner c1 = new Scanner(System.in);
+		Scanner c2 = new Scanner(System.in);
+		// obtain values
+		System.out.println("What is your name? ");
+		String name = c1.nextLine();
+		System.out.println("How much money are you paid per hour? ");;
+		double pay_hour = c2.nextDouble();
+		System.out.println("How many hours did you work? ");;
+		int hours = c2.nextInt();
+
+		System.out.println();
+		
+		// compute overall pay
+
+
+
+
+
+                // print out the result
+		System.out.println("Hi " + name + " You have earned: $" + pay);
+
+	}
+}
+
+  
+----------
+Problem 3:
+----------
+If necessary, use a cast in the following pieces of code to either
+
+ a. get rid of a syntax error, if there is one
+OR
+ b. if there would be no syntax error and there would be information loss (e.g. truncation) 
+    then use a cast to avoid that
+OR
+ c. if neither situation above occurs, then it does not need a cast
+
+Treat each of the 3 sets of code separately.
+Note well: Do not place a cast anywhere that it is not necessary.
+
+If you need to, after you think about the code a little while, feel free 
+to place these pieces of code into a program (which you do not need to 
+submit) and add print statements to see what the output is or if there
+would be a syntax error.
+
+a. 
+
+   int x=5;
+   double y;
+   y = x * 3;
+
+b.
+
+   double d=4.5;
+   int e;
+   e = d;
+
+c.
+
+   int a=6, b=7;
+   double c;
+   c = a/b;
+
+
+
+----------
+Problem 4:
+----------
+The following program contains at least 5 mistakes. What are they?
+
+
+public class Mistakes{
+  public static void main(String[] args){
+     int a = 7, b = 42;
+     if (a < b){
+        int smaller = a;
+     } else (a => b){
+        int smaller = b;
+     }
+     if {smaller = a} {
+        System.out.println("a is the smallest");
+  }
+} 
+
+The problems are:
+
+1. "b" is not an integer because it is not between 1 and 9. The number '42' is not allowed as an integer. 
+
+2. Missing an end statement, semicolon, after the 42. 
+
+3. The symbol '=>' is backwards, it should look like '>='
+
+4. The equal sign should be in the 'if' section of the statement becuase a cannot be smaller than b is they are equal to eachother. 
+
+5. On the last if statement, it uses curley braces instead of parenthases. 
+
+
+
+
+
+
+
+----------
+Problem 5:
+----------
+Write a Java program called CollegeAdmit that uses the Scanner to read user's input
+for a student grade point average and SAT exam score. A GPA below 1.8 will cause the student to 
+be rejected, an SAT score below 900 will also cause a rejection. Otherwise the student is accepted.
+Here are results of two runs:
+----------------------------------------
+What is your GPA? 
+3.2
+What is your SAT score? 
+1280Whaty
+Congratulations! You were accepted.
+
+What is your GPA? 
+3.1
+What is your SAT score? 
+780
+Your SAT score is too low. You were not accepted
+
+ 
+
+Submit to me maghilin@skidmore.edu via email the following:
+the .java file for problem 5.
+and this file with your answer to the rest.
+
+
+
+
+
+
+
+
+
+

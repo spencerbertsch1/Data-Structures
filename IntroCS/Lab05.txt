@@ -1,0 +1,197 @@
+                                 CS106 Fall 2014
+                                      Lab 05
+                                October 6, 2014
+**********************************************************************************
+
+Purpose: Practice working with the following Java topics: 
+         arrays - one and two dimensional,
+         static methods,
+         scopes.
+         
+Instructions:
+
+Save this file to disk. Enter answers for problems 3, and 4 directly in it.
+Submit what is requested at the end of this file via email to me at 
+maghilin@skidmore.edu
+***********************************************************************************
+Problem 1:
+----------
+   
+Suppose you have the opportunity to talk to anybody - living or dead - who would it be?
+Run the following program and familiarize yourself with how it works. Then, first change 
+the conversational contents of the program such that it reflects a conversation with the person 
+you wish. Next, complete the definition of the following static method and use it in your program:
+
+
+// This method returns true if string a contains string b regardless of their cases.
+
+public static boolean containsIgnoreCase(String a, String b){
+     ...
+} 
+                     ----------------------------------------------------
+
+import java.util.*;
+
+
+/*************************************************************************************
+*  
+*  File name:
+*  Purpose:
+*  Author:    
+*  Date:      10/6/14
+*
+**************************************************************************************/
+
+public class TalkToMe {
+
+	public static void main(String[] args) {
+		
+	    Random rand = new Random();
+	    Scanner input = new Scanner(System.in);
+	    String current;
+	    boolean Found = false;
+		
+	    String[] keywords = {"Hello", "fine", "student"};
+	    String[][] response = { {"Great! How are you today?", "Ok. How are you?"},
+		{"I'm fine as well. What do you do?  ", "I am a fine computer, what are you?"},
+		{"I had no idea! What would you like to discuss?", "Interesting! Please tell me more."},
+                {"I don't know what you are talking about", "Oh, I see...", "I can't answer that.", "Hmm...Let me think"}
+		};
+		
+	    System.out.println("Hello I am Tulips.");
+	    current = input.nextLine();
+	    while (!current.contains("bye")) {
+	        for (int i=0; i < keywords.length; i++){	
+		    if (current.contains(keywords[i])){
+				Found = true;
+				System.out.println(response[i][rand.nextInt(response[i].length)]);
+				break;
+		     }
+
+		  }
+		  if (!Found )
+			System.out.println(response[keywords.length][rand.nextInt(response[keywords.length].length)]);
+
+		  current = input.nextLine();
+		  Found = false;
+	     }
+	     System.out.println("Bye. See you around!");
+	     input.close();
+
+	}
+
+}
+
+Here is a sample run:
+
+Hello I am Tulips.
+Hello Tulips. How are you?
+Great! How are you today?
+Fine, thank you.
+I'm fine as well. What do you do?  
+I am a student.
+Interesting! Please tell me more.
+I do lots of interesting things: go to classes, study, listen to music,...
+I don't know what you are talking about
+Ok, never mind now, I have to go bye
+Bye. See you around!
+
+ 
+----------
+Problem 2:
+----------
+
+Write a Java program to simulate a random draw of 3 volunteers in two ways: 
+
+1. By creating two one dimensional string arrays called: titles and names.
+   Populate titles with: "Mr. ", "Mrs. ", "Ms. ", "Dr. ", and populate names with: "Joe ", "Joan ", and
+   "Martin ". Next randomly create 3 combinations of title and names. 
+
+2. Create a two dimensional string array populated with the same data to print out the same
+   title names combinations from part 1.
+
+
+
+
+    
+----------
+Problem 3:
+----------
+What three values are printed by each call below? Write them in comments space provided.
+
+
+public class MysteryNums {
+
+    static int z = 5;
+
+    public static void main(String[] args) {
+        int x = 15;
+        sentence(x, 42);      //  
+        
+        z++;
+        int y = x - 5;
+        sentence(y, x + y);   //  
+    }
+    
+    public static void sentence(int num1, int num2) {
+        System.out.println(num1 + "  " + num2 + "  " + z);
+    }
+}
+
+
+
+
+The Numbers outputted are as follows:
+15   42   5
+10   25   6
+
+ 
+----------
+Problem 4:
+----------
+The following program has 9 errors. Can you find all of them?
+
+public class Parameters {
+    public static void main() {
+        double bubble = 67.53;
+        double x = 10.01;
+        printer(double x, double y);
+        printer(x);
+        printer("barack", "obama");
+        System.out.println("z = " + z);
+    }
+
+    public static void printer(x, y double) {
+        int z = 5;
+        System.out.println("x = " + double x + " and y = " + y);
+        System.out.println("The value from main is: " + bubble);
+    }
+}						
+
+The nine errors are as follows
+1.There in a unnecessary curley braces at the end of the code. 
+2.Printer "barack" , "obama" is not the correct way to call the printer method. 
+3.Z is defined in the method, and is'nt in the scope of the main. 
+4.Double is defined in the main, but isnt in the scope of the method. 
+5.Double is never declared. 
+6.Double (x) in printer is declareed twice.
+7.Printer (x) does not make sense because x is only one double. 
+8.The second Public Static Void should be Double x, Double y to declare the two Doubloe varriables. 
+9.Bubble is not defined
+
+
+
+
+Submit to me maghilin@skidmore.edu via email the following:
+the .java file for problems 1, and 2.
+and this file with your answer to the rest.
+
+
+
+
+
+
+
+
+
+

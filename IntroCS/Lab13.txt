@@ -1,0 +1,325 @@
+                                 CS106 Fall 2014
+                                      Lab 13
+                                December 8, 2014
+**********************************************************************************
+
+Purpose: Practice in the following Java topics:
+           - Linked list
+           - Review topics:
+                -- Java type
+                -- binary search
+                -- reading from and writing to a file
+                -- interface
+                -- inheritance
+
+Instructions:
+
+Save this file to disk. Submit what is requested at the end of this file via email 
+to me at maghilin@skidmore.edu
+                   
+
+-----------
+Problem 1:
+----------
+Create a new class called LinkedListExample and copy and paste the following program in it.
+Run the program. Next, change the type of the elements of the list from the String to Integer.
+Populate the list first with numbers from 1 - 5, and do the following operations:
+
+   - add 0 to the beginning of the list and 6 to the end, 
+   - change the first element to -1,
+   - remove the first and the last elements,
+   - add -10 to the beginning of the list.
+ 
+report your output.
+
+import java.util.*;
+public class LinkedListExample {
+     public static void main(String args[]) {
+
+         /* Linked List Declaration */
+         LinkedList<String> linkedlist = new LinkedList<String>();
+
+         /*add(String Element) is used for adding 
+          * the elements to the linked list*/
+         linkedlist.add("x");
+         linkedlist.add("y");
+         linkedlist.add("m");
+         linkedlist.add("k");
+         linkedlist.add("a");
+
+         /*Display Linked List Content*/
+         System.out.println("Linked List Content: " + linkedlist);
+
+         /*Add First and Last Element*/
+         linkedlist.addFirst("First");
+         linkedlist.addLast("Last");
+         System.out.println("LinkedList Content after addition: " + linkedlist);
+
+         /*This is how to get and set Values*/
+         Object firstvar = linkedlist.get(0);
+         System.out.println("First element: " + firstvar);
+         linkedlist.set(0, "updatedFirst");
+         Object firstvar2 = linkedlist.get(0);
+         System.out.println("First element after update by set method: " + firstvar2);
+
+         /*Remove first and last element*/
+         linkedlist.removeFirst();
+         linkedlist.removeLast();
+         System.out.println("LinkedList after deletion of first and last element: " + linkedlist);
+
+         /* Add to a Position and remove from a position*/
+         linkedlist.add(0, "New");
+         linkedlist.remove(2);
+         System.out.println("Final Content: " + linkedlist); 
+     }
+}
+
+//OUTPUT:
+//[-10, 1, 2, 3, 4, 5]
+
+----------
+Problem 2:
+----------
+Suppose you want to swap two values and write a static method to do that. Does the following work?
+
+	public static void main(String[] args) {
+	    int a = 7;
+	    int b = 35;
+
+	    // swap a with b
+	    swap(a, b);
+
+	    System.out.println(a + " " + b);
+	}
+
+	public static void swap(int a, int b) {
+	    int temp = a;
+	    a = b;
+	    b = temp;
+	}
+
+How do you explain the result?
+
+
+OUTPUT:
+This code switches the values of the integers a and b. It uses the 'swap' method to swap the integer values of a and b. If you print the values of a and be at then end, they will have switched values. 
+
+
+Now suppose you want to swap two elements of an array using the following code:
+
+
+public static void main(String[] args) {
+	int[] a = {4, 7, 8, 9, 3, 2, 10, 7, 5};
+        int i = 2;
+        int j = 5;
+	// swap a[i] with a[j]
+	    swap(a, i, j);
+
+	}
+
+// Swaps a[i] with a[j].
+public static void swap(int[] a, int i, int j) {
+    if (i != j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+}
+
+What will be the result of running the above code? How do you explain the outcome?
+
+OUTCOME:
+This method does NOT switch the values that you want it to switch. This is because the file cannot use this switch method to switch the contents of the array a. 
+
+
+----------
+Problem 3:
+---------- 
+Create a class called BinarySearch and copy and paste the following in it:
+
+
+
+import java.util.*;
+
+public class BinarySearch {
+
+	public static void main(String[] args) {
+	   Scanner input = new Scanner(System.in);
+	   System.out.println("Enter an integer number: ");
+	   int t = input.nextInt();
+	   int[] x = {23, 4, 78, 5, 100, 78, 20, 65, 86};	  
+	   int index = Arrays.binarySearch(x, t);
+	   if (index == -1)
+		   System.out.println(t + " is not found.");
+	   else
+		   System.out.println(t + " is found and its index is: " + index);
+	   input.close();
+	}
+}
+
+
+The above code is supposed to read an integer from the user and use binary search to see if the 
+integer is found in an array, but it does not work. Recall the definition for binary search,
+can you fix the program?
+
+SOLUTION:
+Yes, you can fix the problem by first sorting the array! Use: Arrays.sort(x); to sort the array and then the binary search will work well. 
+
+------------
+Problem 4
+------------
+
+Open a your InputOutput project and add the text file called StarWars to it. 
+
+Create a class in the same project called FileDemo2 to read this file; and delete the empty lines. 
+To delete the empty lines, you can use the String class, isEmpty() method to check if each line is 
+empty and if not print the line to an output file with a name that the user provides.
+
+------------
+Problem 5
+------------
+Create an interface called Shape3D which includes two public methods: (getVolume and getSurfaceArea), 
+each of these methods accept no parameters and the return type of each is a double value.
+
+Create two separate classes Sphere and RectangularPrism. The content of each class is partially given.
+Complete the following two classes by filling in the dots to implement Shape3D interface:
+
+// Represents a perfect sphere.
+
+public class Sphere implements Shape3D {
+    private double radius;
+
+    
+    public Sphere(double radius) {
+        ...
+    }
+    
+    // returns the radius
+    public double getRadius() {
+        ...
+    }
+
+    public double getSurfaceArea() {
+        return 4 * Math.PI * radius * radius;
+    }
+
+    public double getVolume() {
+        return 4.0 * Math.PI * radius * radius * radius / 3.0;
+    }
+}
+ 
+and the other one:
+
+// Represents a three-dimensional rectangular shape.
+
+public class RectangularPrism implements Shape3D {
+    private double length;
+    private double width;
+    private double height;
+    
+    public RectangularPrism(double length, double width, double height) {
+ 
+      ...
+
+
+    }
+
+    // returns the height
+    public double getHeight() {
+        ...
+    }
+    
+    // returns the length
+    public double getLength() {
+        ...
+    }
+ 
+    // returns the width
+    public double getWidth() {
+        ...
+    }
+
+    public double getSurfaceArea() {
+        return 2 * length * width
+             + 2 * width * height
+             + 2 * length * height;
+    }
+    
+    ...
+
+}
+
+
+------------
+Problem 6
+------------
+Given the super class Vehicle and the subclasses Truck and MonsterTruck as following:
+
+public class Vehicle {
+    public void method1() {
+        System.out.println("Vehicle 1");
+    }
+    public void method2() {
+        System.out.println("Vehicle 2");
+    }
+    public String toString() {
+        return "Vehicle";
+    }
+}
+
+
+public class Truck extends Vehicle {
+    public void method1() {
+        System.out.println("Truck 1");
+    }
+    public String toString() {
+        return "Truck";
+    }
+}
+
+public class MonsterTruck extends Truck {
+    public void method1() {
+        System.out.println("Monster Truck 1");
+    }
+}
+
+What is the output of the following program?
+
+public class VehicleDemo {
+
+	public static void main(String[] args) {
+		Vehicle[] array = {new Truck(), new Truck(), new MonsterTruck(), new Vehicle()};
+		for (int i = 0; i < array.length; i++) {
+		    System.out.println(array[i]);
+		    array[i].method1();
+		    array[i].method2();
+		    System.out.println();
+		}
+
+
+	}
+
+}
+
+OUTPUT: Truck
+Truck 1
+Vehicle 2
+
+Truck
+Truck 1
+Vehicle 2
+
+Truck
+Monster Truck 1
+Vehicle 2
+
+Vehicle
+Vehicle 1
+Vehicle 2
+
+
+Submit to me maghilin@skidmore.edu via email your answers to the the problems 1-6.
+
+
+
+

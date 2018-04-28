@@ -1,0 +1,398 @@
+                                 CS106 Fall 2014
+                                      Lab 12
+                                December 1, 2014
+**********************************************************************************
+
+Purpose: Practice in the following Java topics:
+           - Practice reading tokens and understand the way a Scanner breaks input into tokens
+           - explore token-based and line-based input
+           - reading from a file using Scanner and File objects
+                    
+
+Instructions:
+
+Save this file to disk. Submit what is requested at the end of this file via email 
+to me at maghilin@skidmore.edu
+
+-----------
+Problem 1:
+----------
+What is the output to the following lines:
+
+Scanner input = new Scanner(new File("data.txt"));
+System.out.println(input.next());
+System.out.println(input.next());  
+
+
+Given that data.txt has the following contents: 
+
+17  There are 
+some data to read.
+
+67 3
+
+
+
+OUTPUT
+17
+There
+
+
+
+----------
+Problem 2:
+----------
+
+What is the output to the following lines
+
+Scanner input = new Scanner(new File("data.txt"));
+System.out.println(input.nextInt());
+System.out.println(input.nextInt());  
+
+
+Given that data.txt has the following contents (write error if you think an error would occur) :  
+
+17  There are 
+some data to read.
+
+67 3
+
+
+OUTPUT
+17
+67
+
+
+
+
+
+----------
+Problem 3:
+---------- 
+What is the output to the following lines:
+
+Scanner input = new Scanner(new File("data.txt"));
+while (!input.hasNextDouble()) {
+    input.next();
+}
+System.out.println(input.nextDouble());
+
+
+Given that data.txt has the following contents (write error if you think an error would occur) :  
+
+17  There are 
+some data to read.
+
+ 7.6 3
+
+
+OUTPUT
+17
+
+
+------------
+Problem 4
+------------
+
+Create a new project called InputOutput and add a text file called numbers including the following line:
+
+3.25 4.5 -8.25 7.25 3.5 4.25 -6.5 5.25 6.78 10.34
+
+to that project. 
+
+
+Create another class in the same project called FileDemo1 as following:
+
+import java.io.*;    // for File
+import java.util.*;  // for Scanner
+
+public class FileDemo1 {
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner input = new Scanner(new File("numbers"));
+		ArrayList<Double> list = new ArrayList<Double>();
+        while (input.hasNextDouble()) {
+            Double n = input.nextDouble();
+            list.add(n);            
+        }
+        System.out.println(list);
+        Collections.sort(list);
+        System.out.println(list);
+        input.close();
+    }
+}
+
+
+What is the result of running this program?
+
+OUTPUT
+[3.25, 4.5, -8.25, 7.25, 3.5, 4.25, -6.5, 5.25, 6.78, 10.34]
+[-8.25, -6.5, 3.25, 3.5, 4.25, 4.5, 5.25, 6.78, 7.25, 10.34]
+
+
+----------
+Problem 5:
+---------- 
+The following code is supposed to count the total lines and words in the given input scanner.
+There are five errors in this program. Fix the errors and run it. Complete this code so that 
+it prints out the number of words and the number of lines in the input file each in a separate 
+line.
+
+import java.io.*;    // for File
+import java.util.*;  // for Scanner
+
+public class WordCount 
+    public static void main(String[] args) throws FileNotFoundException {
+    Scanner input = new Scanner(new File("test.txt"));
+    int lineCount = 0;
+    int wordCount = 0;
+    
+    while (input.nextLine()) {
+        String line = input.line();   // read one line
+        lineCount++;
+        Scanner lineScan = new Scanner(line);
+        while (line.next()) {      // count tokens in line
+            String word = lineScan.hasNext();
+            wordCount++;
+        }
+        lineScan.close();
+    }
+    System.out.println("The number of lines in the file is: " + lineCount);
+    System.out.println("The number of words in the file is: " + wordCount);
+
+PROBLEMS
+1.No open curley braces after public class WordCount
+2.there should be a 'has' in the input.hasNextLine
+3.line() should be changed to nextLine()
+4.the linescan should be linescan.next
+5.The while loop must be fixed so that it can count the number of lines
+
+OUTPUT
+The number of lines in the file is: 1
+The number of words in the file is: 4
+
+
+TEXT FILE
+Science is super neat. 
+
+
+    }
+}
+
+
+
+------------
+Problem 6
+------------
+
+Create and add a text file called elise including the following line to your InputOutput project:
+
+6 .125 
+7 .125 
+6 .125 
+7 .125 
+2 .125 
+5 .125 
+3 .125 
+0 .25  
+
+-100 .125
+
+ -9 .125
+ -5 .125
+  0 .125
+  2 .25
+
+-100 .125
+
+-5  .125
+-1  .125
+ 2  .125
+ 3  .25
+
+-100 .125
+
+-5 .125
+7 .125 
+6 .125 
+7 .125 
+6 .125 
+7 .125 
+2 .125 
+5 .125 
+3 .125 
+0 .25  
+
+-100 .125
+
+ -9 .125
+ -5 .125
+  0 .125
+  2 .25
+
+-100 .125 
+
+ -5 .125
+ -9 .125
+  2 .125
+  0 .5
+
+
+
+
+
+
+7 .125 
+6 .125 
+7 .125 
+6 .125 
+7 .125 
+2 .125 
+5 .125 
+3 .125 
+0 .25  
+
+-100 .125
+
+ -9 .125
+ -5 .125
+  0 .125
+  2 .25
+
+-100 .125
+
+-5  .125
+-1  .125
+ 2  .125
+ 3  .25
+
+-100 .125
+
+-5 .125
+7 .125 
+6 .125 
+7 .125 
+6 .125 
+7 .125 
+2 .125 
+5 .125 
+3 .125 
+0 .25  
+
+-100 .125
+
+ -9 .125
+ -5 .125
+  0 .125
+  2 .25
+
+-100 .125 
+
+ -5 .125
+ -9 .125
+  2 .125
+  0 .25
+
+
+
+Create another class in the same project called MyHelp as following:
+
+
+	import javax.sound.sampled.*;
+
+	/*************************************************************************
+	 *  
+	 *  Simple library for reading, writing, and manipulating .wav files.
+	 *
+	 *  Limitations
+	 *  -----------
+	 *    - Does not seem to work properly when reading .wav files from a .jar file.
+	 *    - Assumes the audio is monaural, and 44,100 samples per second.
+	 * 
+	 * A short revision of StdAudio by Robert Sedgewick and Kevin Wayne
+	 * of Computer Science, Princeton. 
+	 *
+	 *************************************************************************/
+	public class Myhelp {
+	    private final static int FPS = 44100;   // samples per second
+
+	    /* Play array input.
+	        Precondition. It's a .wav file, 44,100 samples per second,
+	        16-bit audio, mono, signed PCM, little Endian,
+	        with array values between -1 and 1
+	    */
+	    public static void play(double[] input) {
+	        AudioFormat format= new AudioFormat(FPS, 16, 1, true, false);
+	        byte[] data= new byte[2 * input.length];
+	        int temp;
+	        for (int i= 0; i < input.length; i++) {
+	            temp= (int) (input[i] * 32768.0);
+	            data[2*i + 0]= (byte) temp;
+	            data[2*i + 1]= (byte) (temp >> 8);
+	        }
+	        play(format, data);
+	    }
+
+
+	    /* play the sound represented by filename */
+	    private static void play(AudioFormat format, byte[] data) {
+	        SourceDataLine line= null;
+	        DataLine.Info info= new DataLine.Info(SourceDataLine.class, format);
+	        try {
+	            line= (SourceDataLine) AudioSystem.getLine(info);
+	            line.open(format);
+	        }
+	        catch (Exception e) {
+	            System.out.println(e);
+	            System.exit(1);
+	        }
+
+	        line.start();
+	        line.write(data, 0, data.length);
+	        line.drain();
+	        line.close();
+	    }
+
+	}
+
+
+Create another class called PlayTheTune as following:
+
+import java.util.*;
+import java.io.*;
+
+public class PlayTheTune {
+
+	public static void main(String[] args) throws FileNotFoundException{
+		
+		Scanner inFile = new Scanner(new File("elise"));
+		int sps = 44100;
+		int pitch, N;
+		double duration, hz;
+        while (inFile.hasNext())
+        {   //Read and play the tune
+        	pitch = inFile.nextInt();
+        	duration = inFile.nextDouble();
+        	hz = 440 * Math.pow(2,  pitch / 12.0);
+        	N = (int) (sps * duration);
+        	double[] a = new double[N+1];
+		    for (int i = 0; i <= N; i++)
+			   a[i] = Math.sin(2*Math.PI * i * hz / sps);
+		Myhelp.play(a);
+		} // end of while
+     inFile.close();
+	}
+}
+
+What is the result of running this program?
+
+OUTPUT
+You hear a song from the headphones! So cool!
+
+Submit to me maghilin@skidmore.edu via email your answers to the the problems 1-5.
+
+
+
+
+
+
+

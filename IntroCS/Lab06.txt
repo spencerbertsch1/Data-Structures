@@ -1,0 +1,147 @@
+                                 CS106 Fall 2014
+                                      Lab 05
+                                October 13, 2014
+**********************************************************************************
+
+Purpose: Review material that we studied so far:
+         control flow - conditional, loops 
+         arrays - one and two dimensional,
+         static methods,
+         scopes.
+         
+Instructions:
+
+Save this file to disk. Enter answers for problem 3 directly in it.
+Submit what is requested at the end of this file via email to me at 
+maghilin@skidmore.edu
+***********************************************************************************
+----------
+Problem 1:
+----------
+   
+Write a static method named nUnique that accepts three integers as parameters, prints out input parameters, and returns the number of unique integers among the three. For example, the call nUnique(8, 0, 5) should return 3 because the parameters have 3 different values. By contrast, the call nUnique(4, 9, 4) would return 2 because there are only 2 unique numbers among the three parameters: 4 and 9.
+
+How do you call this method? Test this method by writing a simple caller program.
+
+
+
+
+Here is a sample run:
+
+(3 , 7 , 9): thus 3 unique numbers.
+(4 , 8 , 4): thus 2 unique numbers.
+(4 , 4 , 4): thus 1 unique numbers.
+
+ 
+----------
+Problem 2:
+----------
+
+Write a Java static method pickMovie that accepts two parameters: the cost of a ticket in dollars, and the rating as a String of stars the movie received out of 5. The method should print the input parameters first and return how interested you are (very, sort-of, or not) as a String. Use the following criteria:
+
+a. You like bargains. Any movie that costs less than $5.00 is one that you want to see very much.
+
+b. You dislike expensive movies. You are not interested in seeing any movie that costs $12.00 or more, unless it got 5 stars (and even then, you are only sort-of interested).
+
+c. You like quality. You are very interested in seeing 5-star movies that cost under $12.00.
+
+d. You are sort-of interested in seeing movies costing between $5.00 - $11.99 that also got between 2-4 stars inclusive.
+
+How do you call this method? Test this method by writing a simple caller program.
+
+
+Here is the output for 3 sample calls:
+
+Ticket price of $14.0 and rating of *****; sort-of interested.
+Ticket price of $12.0 and rating of ***; not interested.
+Ticket price of $7.0 and rating of *****; very interested.
+
+
+    
+----------
+Problem 3:
+----------
+Given the following method, without running the program, can you guess the output produced by the following method calls:
+
+myMthod(2);
+
+myMthod(5);
+
+myMethod(24);
+
+
+public static void myMethod(int n) {
+    int x = 1;
+    int y = 2;
+    while (y < n) {
+        if (n % y == 0) {
+            n = n / y;
+            x++;
+        } else {
+            y++;
+        }
+    }
+    System.out.println(x + " " + n);
+}
+
+THIS WILL OUTPUT THE FOLLOWING:
+
+1 2
+1 5
+4 3
+
+
+
+----------
+Problem 4:
+----------
+Write a static Java method called stars which accepts an integer input as the maximum number of stars  and uses 
+nested for-loops to produce the following output:
+
+
+A sample run for stars(5):
+
+*****
+****
+***
+**
+* 
+
+And a sample run for stars(6):
+
+******
+*****
+****
+***
+**
+* 
+
+ 
+----------
+Problem 5:
+----------
+Recall that arrays can be passed as parameters and returned from methods:
+
+public static type name(type[] name) {   // pass array parameter
+
+public static type[] name(parameters) {   // return array
+
+Write a Java static method which takes an array of doubles; uses Math.round(double x) method
+and returns a new array of rounded integers. Test your method by running a simple caller program
+to round the following array: {4.35, 6.5, 7.9, -2.34, 0.0} using your method.
+
+
+
+Submit to me maghilin@skidmore.edu via email the following:
+the .java file for problems 1,2 and 4,5.
+and this file with your answer to the rest.
+
+
+
+
+
+
+
+
+
+

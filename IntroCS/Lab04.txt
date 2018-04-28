@@ -1,0 +1,169 @@
+                                 CS106 Fall 2014
+                                      Lab 04
+                                September 29, 2014
+**********************************************************************************
+
+Purpose: Practice working with the following Java topics 
+         while loops,
+         switch statement,
+         arrays,
+         use Math.random() method to produce random numbers.
+         
+Instructions:
+
+Save this file to disk. Enter answers for problems 1, 3, and 4 directly in it.
+Submit what is requested at the end of this file via email to me at 
+maghilin@skidmore.edu
+***********************************************************************************
+Problem 1:
+----------
+   
+Change the following program to simulate rolling two dice. Notice that the program as is, simulates rolling one die. You should use Math.random() method to produce the following output:
+
+
+2, 3    2, 2    1, 5    6, 3    
+3, 5    5, 1    6, 5    3, 5    
+5, 2    3, 1    1, 6    2, 6    
+
+
+// Randomizing dice-rolling program
+
+
+public class DiceProblem {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// Randomizing dice-rolling program
+
+		
+				int i;
+				int rand;
+				int random;
+				for(i=1; i<= 12; i++){
+					// pick a random number from 1 to 6 and output it
+					rand = 1 + (int)(Math.random()*6);
+					random = 1 + (int)(Math.random()*6);
+					System.out.print(rand + ",");
+					System.out.print(random + "   ");
+					// if counter is divisible by 5 begin a new line of output
+					if ((i % 4) == 0){
+						System.out.println();
+					}
+				}
+				
+			}
+	}
+
+
+
+
+
+----------
+Problem 2:
+----------
+
+Write a Java program which is listening to a user's input to turn on an LED continuously. 
+Use a switch statement to turn on one of the three LEDs based on the choice value read from the user. 
+The user can enter a number between 1-3 to turn on the corresponding LED and any integer number besides 
+these will turn all the LEDs off. Typing -1 would stop the program. 
+
+
+A sample run can be:
+
+
+Enter 1-3 to turn one of the three LEDs on;
+any integer other than 1-3 to turn them all off (-1 to stop): 
+3
+LED 3 is ON
+Enter 1-3 to turn one of the three LEDs on;
+any integer other than 1-3 to turn them all off (-1 to stop): 
+2
+LED 2 is ON
+Enter 1-3 to turn one of the three LEDs on;
+any integer other than 1-3 to turn them all off (-1 to stop): 
+4
+All three LEDs are turned off.
+Enter 1-3 to turn one of the three LEDs on;
+any integer other than 1-3 to turn them all off (-1 to stop): 
+-1
+    
+----------
+Problem 3:
+----------
+The following program has at least 5 errors. Copy/paste this code int a class Average and fix the errors. 
+Complete the code so it passes the run test. 
+
+
+import java.util.Scanner;
+
+public class Problem03 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		    Scanner input = new Scanner(System.in);
+		    System.out.println("Enter 10 numbers: ");
+		   
+		    int[] data = new int[10];
+		    for(int i=0; i < 10; i++)
+		      data[i] = input.nextInt();
+
+		    int sum = 0;
+		    double average;
+
+		    for (int i = 0; i < data.length; i++) {
+		     sum = sum + data[i];
+		    }
+		    average = sum / 10.;
+		    System.out.println("Average is: " + average);
+		 }
+		
+	}
+
+
+
+
+
+
+ 
+----------
+Problem 4:
+----------
+Fill in the array with the values that would be stored after the following code executes:
+
+int[] x = new int[9];
+x[0] = 3;
+x[7] = -18;
+x[4] = 5;
+x[1] = x[0];
+
+int y = x[4]; //y=6
+x[4] = 6;
+x[y] = x[0] * x[1]; //3*3=9
+
+
+index	0	1	2	3	4	5	6	7	8
+value	3	3			6		9	-18
+
+
+
+----------
+Problem 5:
+----------
+
+Write a Java program that reads the number of elements of an array and then prompts the user to populate the array. Next, the program should print out the array first in forward and then in reverse order. 
+
+Submit to me maghilin@skidmore.edu via email the following:
+the .java file for problems 2, and 5.
+and this file with your answer to the rest.
+
+
+
+
+
+
+
+
+
+
